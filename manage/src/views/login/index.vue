@@ -69,7 +69,6 @@
     h2 {
         font-size: 26px;
         color: #eee;
-        font-weight: bold;
         text-align: center;
     }
     }
