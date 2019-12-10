@@ -1,19 +1,20 @@
 <template>
     <div class="login">
         <div class="slideSty" v-show="showSlide">
-            <slider-verify
-                @success="onSuccess"
-                @fail="onFail"
-                :sliderText="text"
-                :w="350"
-                :h="175"
-                ref="slideDiv"
-                ></slider-verify>
+            <slide-verify
+                    @success="onSuccess"
+                    @fail="onFail"
+                    :sliderText="text"
+                    :w="350"
+                    :h="175"
+                    ref="slideDiv"
+            ></slide-verify>
             <div class="iconBtn">
-                <i class="el-icon-circle-close" @click="showSlide = false"></i>
-                <i class="el-icon-refresh" @click="refresh"></i>
+                <i class="el-icon-circle-close" @click="showSlide = false"></i
+                ><i class="el-icon-refresh" @click="refresh"></i>
             </div>
         </div>
+
         <el-form ref="loginForm" class="loginCon" :rules="rules" :model="ruleForm">
             <div class="titleDiv">
                 <h2>系统登录</h2>
@@ -98,6 +99,9 @@
                     }
                 })
             }
+        },
+        components :{
+        // SlideVerify
         }
     }
 </script>
