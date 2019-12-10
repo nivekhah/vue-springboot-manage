@@ -25,7 +25,7 @@ $axios.interceptors.request.use(
     config=>{
         //添加加载器
         loading = Loading.service({text:'拼命加载中...'})
-        const token = localStorage.getItem('token')
+        const token = store.state.token
         if(token){
             config.headers.Authorization = token  //请求头添加token
         }
