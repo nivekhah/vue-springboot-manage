@@ -46,35 +46,6 @@ export const currencyRoutes = [
                 meta: { title: '首页', icon: 'el-icon-s-data' }
             }
         ]
-    },
-    {
-        path: '/personal',
-        name: 'Personal',
-        component: Layout,
-        redirect: '/personal/index',
-        hidden: true,
-        children: [
-            {
-                path: 'index',
-                name: 'Personal-index',
-                component: () => import('../views/personal'),
-                meta: { title: '个人中心' }
-            }
-        ]
-    },
-    {
-        path: '/driver',
-        name: 'Driver',
-        component: Layout,
-        redirect: '/driver/index',
-        children: [
-            {
-                path: 'index',
-                name: 'Driver-index',
-                component: () => import('../views/driver-page'),
-                meta: { title: '引导指南', icon: 'el-icon-s-flag' }
-            }
-        ]
     }
 ]
 /*动态添加routers*/
@@ -123,57 +94,16 @@ export const asyncRoutes = [
         },
         children: [
             {
-                path: 'base-table',
-                name: 'BaseTable',
-                component: () => import('../views/table/common-table'),
-                meta: { title: '普通表格' }
-            },
-            {
                 path: 'complex-table',
                 name: 'ComplexTable',
                 component: () => import('../views/table/complex-table'),
                 meta: { title: '复杂表格' }
-            }
-        ]
-    },
-    {
-        path: '/icons',
-        component: Layout,
-        name: 'Icons',
-        redirect: '/icons/index',
-        children: [
-            {
-                path: 'index',
-                name: 'Icons-index',
-                component: () => import('../views/icons'),
-                meta: { title: 'Icons图标', icon: 'el-icon-picture-outline' }
-            }
-        ]
-    },
-    {
-        path: '/components',
-        component: Layout,
-        name: 'Components',
-        redirect: '/components/slide-yz',
-        meta: { icon: 'el-icon-coin', title: '部分组件' },
-        children: [
-            {
-                path: 'slide-yz',
-                name: 'Sldie-yz',
-                component: () => import('../views/components/slide-yz'),
-                meta: { icon: 'el-icon-s-claim', title: '滑动验证' }
             },
             {
-                path: 'upload',
-                name: 'Upload',
-                component: () => import('../views/components/pushImg'),
-                meta: { icon: 'el-icon-upload', title: '上传图片' }
-            },
-            {
-                path: 'carousel',
-                name: 'Carousel',
-                component: () => import('../views/components/carousel'),
-                meta: { icon: 'el-icon-lunbo iconfont', title: '轮播' }
+                path: 'complex-table2',
+                name: 'ComplexTable2',
+                component: () => import('../views/table/complex-table'),
+                meta: { title: '复杂表格' }
             }
         ]
     },
@@ -195,39 +125,6 @@ export const asyncRoutes = [
                 name: 'Dynamic-chart',
                 component: () => import('../views/echarts/dynamic-chart'),
                 meta: { title: '切换charts' }
-            },
-            {
-                path: 'map-chart',
-                name: 'Map-chart',
-                component: () => import('../views/echarts/map-chart'),
-                meta: { title: 'map' }
-            }
-        ]
-    },
-    {
-        path: '/excel',
-        component: Layout,
-        name: 'Excel',
-        redirect: '/excel-operate/excel-out',
-        meta: { icon: 'el-icon-excel iconfont', title: 'Excel' },
-        children: [
-            {
-                path: 'excel-out',
-                name: 'Excel-out',
-                component: () => import('../views/excel-operate/excel-out'),
-                meta: { title: 'Excel导出' }
-            },
-            {
-                path: 'excel-in',
-                name: 'Excel-in',
-                component: () => import('../views/excel-operate/excel-in'),
-                meta: { title: 'Excel导入' }
-            },
-            {
-                path: 'mutiheader-out',
-                name: 'Mutiheader-out',
-                component: () => import('../views/excel-operate/mutiheader-out'),
-                meta: { title: '多级表头导出' }
             }
         ]
     },
