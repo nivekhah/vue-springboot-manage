@@ -20,10 +20,10 @@
     import NotificatBar from '../components/NotificatBar'
     import PageMain from './components/PageMain'
     import { mapGetters } from 'vuex'
-    import driver from '@/mixins/useDriver'
+    //import driver from '@/mixins/useDriver'
     export default {
         name: 'layout',
-        mixins: [driver],
+        //mixins: [driver],
         mounted() {
             if (this.showDriver === 'yes') {
                 this.guide()
