@@ -30,15 +30,15 @@
 </template>
 
 <script>
-    import SideCollapse from '../../../components/SideCollapse'
+    //import SideCollapse from '../../../components/SideCollapse'
     import BreadCrumb from '../../../components/BreadCrumb'
-    import UserDropdown from '../../../components/UserDropdown'
+    //import UserDropdown from '../../../components/UserDropdown'
     import FullScreen from '../../../components/FullScreen'
     export default {
         components: {
-            SideCollapse,
+           // SideCollapse,
             BreadCrumb,
-            UserDropdown,
+       //     UserDropdown,
             FullScreen
         },
         methods: {
