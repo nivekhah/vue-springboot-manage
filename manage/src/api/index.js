@@ -2,7 +2,8 @@ import axios from 'axios'
 import Qs from 'qs'
 
 import store from "../store";
-import router from "vue-router";
+import router from "../router";
+import Vue from 'vue'
 import {Loading,Message} from "element-ui";
 
 /*
@@ -14,10 +15,15 @@ import {Loading,Message} from "element-ui";
 * */
 
 const $axios = axios.create({
+    //设置超时的时间
     timeout:30000,
-    //baseURL:'https://www.easy-mock.com/mock/5cee951f11690b5261b75566/admin'
+    //基础URL，会再请求url中自动添加前置链接
+    baseURL:process.env.VUE_APP_BASE_API
 })
 
+Vue.prototype.$http = axios //并发请求
+
+//在全局请求与相应拦截器中添加请求状态
 let loading = null
 
 //请求拦截器
@@ -25,7 +31,7 @@ $axios.interceptors.request.use(
     config=>{
         //添加加载器
         loading = Loading.service({text:'拼命加载中...'})
-        const token = store.state.token
+        const token = store.getters.token
         if(token){
             config.headers.Authorization = token  //请求头添加token
         }
@@ -59,7 +65,7 @@ $axios.interceptors.response.use(
             switch (error.response.status) {
                 case 401:
                     //放回401 清除token信息并跳转到登陆界面
-
+                    store.commit('DEL_TOKEN')
                     //重定向到登陆界面
                     router.replace({
                         path:'/login',
