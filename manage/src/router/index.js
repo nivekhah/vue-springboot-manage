@@ -51,73 +51,38 @@ export const currencyRoutes = [
 /*动态添加routers*/
 export const asyncRoutes = [
     {
-        path: '/permission',
-        name: 'Permission',
-        component: Layout,
-        redirect: '/permission/page-use',
-        meta: {
-            title: '权限许可',
-            icon: 'el-icon-lock'
-        },
-        children: [
-            {
-                path: 'page-user',
-                name: 'PageUser',
-                component: () => import('../views/permission/page-user'),
-                meta: { title: '用户页面', icon: 'el-icon-user' }
-            },
-            {
-                path: 'page-admin',
-                name: 'PageAdmin',
-                component: () => import('../views/permission/page-admin'),
-                meta: {
-                    title: '管理员页面',
-                    icon: 'el-icon-user-solid'
-                }
-            },
-            {
-                path: 'roles',
-                name: 'Roles',
-                component: () => import('../views/permission/roles'),
-                meta: { title: '权限设置', icon: 'el-icon-s-tools' }
-            }
-        ]
-    },
-    {
         path: '/table',
         name: 'Table',
         redirect: '/table/base-table',
         component: Layout,
         meta: {
-            title: 'Table',
+            title: '通用查询',
             icon: 'el-icon-table iconfont'
         },
         children: [
             {
-                path: 'complex-table',
-                name: 'ComplexTable',
-                component: () => import('../views/table/complex-table'),
-                meta: { title: '复杂表格' }
+                path: 'chart-definition-management',
+                name: 'ChartDefinitionManagement',
+                component: () => import('../views/general-query/chart-definition-management'),
+                meta: { title: '图表定义管理' }
             },
             {
-                path: 'complex-table2',
-                name: 'ComplexTable2',
-                component: () => import('../views/table/complex-table'),
-                meta: { title: '复杂表格' }
-            }
-        ]
-    },
-    {
-        path: '/error',
-        component: Layout,
-        name: 'Error',
-        redirect: '/error/404',
-        children: [
+                path: 'data-dictionary-management',
+                name: 'DataDictionaryManagement',
+                component: () => import('../views/general-query/data-dictionary-management'),
+                meta: { title: '数据字典管理' }
+            },
             {
-                path: '404',
-                name: 'Page404',
-                component: () => import('../views/error-page/404'),
-                meta: { title: '404', icon: 'el-icon-s-release' }
+                path: 'data-source-management',
+                name: 'DataSourceManagement',
+                component: () => import('../views/general-query/data-source-management'),
+                meta: { title: '数据源管理' }
+            },
+            {
+                path: 'query-definition-management',
+                name: 'QueryDefinitionManagement',
+                component: () => import('../views/general-query/query-definition-management'),
+                meta: { title: '查询定义管理' }
             }
         ]
     },
