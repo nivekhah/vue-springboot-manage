@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import './style/index.scss'
 import './plugins/element'
+
+import animated from ''
 /*  引入滑块*/
 import SlideVerify from 'vue-monoplasty-slide-verify'
 
