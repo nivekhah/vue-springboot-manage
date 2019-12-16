@@ -11,7 +11,7 @@ import getTitle from '../utils/getTitle'
 /**
  * 路由相关属性说明
  * hidden: 当设置hidden为true时，意思不在sideBars侧边栏中显示
- * mete{
+ * meta{
  * title: xxx,  设置sideBars侧边栏名称
  * icon: xxx,  设置ideBars侧边栏图标
  * noCache: true  当设置为true时不缓存该路由页面
