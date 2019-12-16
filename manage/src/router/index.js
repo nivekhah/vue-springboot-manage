@@ -87,6 +87,21 @@ export const asyncRoutes = [
         ]
     },
     {
+        path: '/echarts',
+        component: Layout,
+        name: 'Echarts',
+        redirect: '/echarts/slide-chart',
+        meta: { icon: 'el-icon-s-marketing', title: '数据源' },
+        children: [
+            {
+                path: 'dynamic-chart',
+                name: 'Dynamic-chart',
+                component: () => import('../views/datasourceChart'),
+                meta: { title: '测试' }
+            }
+        ]
+    },
+    {
         path: '*',
         name: '*404',
         redirect: '/404',

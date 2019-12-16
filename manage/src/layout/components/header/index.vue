@@ -2,7 +2,7 @@
     <div class="header">
         <div class="header_l">
             <a href="javascript:;" class="logoLink"
-            ><img src="./logo.png" alt="logo" />Vue Project</a
+            ><img src="./logo.png" alt="logo" style="margin:0" /></a
             >
         </div>
         <div class="header_r">
