@@ -20,3 +20,10 @@ export function getDataDictionary(params) {
     const url='/dataDictionary'
     return $axios.get(url,params)
 }
+
+/* 数据源接口封装 */
+export function getDataSouce(params) {
+    const url = '/datasouce'
+    return $axios.get(url,params)
+}
+

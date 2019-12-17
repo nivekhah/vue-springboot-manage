@@ -43,35 +43,23 @@
             </div>
             <el-table :data="tableData" border stripe>
                 <el-table-column prop="id" label="ID" width="60"></el-table-column>
-                <el-table-column prop="name" label="统计名称"></el-table-column>
-                <el-table-column prop="chartType" label="图表类型"></el-table-column>
+                <el-table-column prop="datasouceName" label="数据源名"></el-table-column>
+                <el-table-column prop="datasouceType" label="数据路类型"></el-table-column>
                 <el-table-column
-                        prop="dimisionType"
-                        label="统计维度类型"
+                        prop="LinkedUrl"
+                        label="链接地址"
                         width="210"
                 ></el-table-column>
-                <el-table-column prop="frequence" label="统计频度"></el-table-column>
-                <el-table-column
-                        prop="datasouceName"
-                        label="数据源名称"
-                        width="70"
-                ></el-table-column>
-                <el-table-column prop="status" label="状态" width="90">
-                    <template slot-scope="scope">
-                        <el-tag :type="scope.row.status | tagClass">{{
-                            scope.row.status | statusText
-                            }}</el-tag>
-                    </template>
-                </el-table-column>
+                <el-table-column prop="database" label="数据库" width="210"></el-table-column>
                 <el-table-column
                         prop="createTime"
                         label="创建时间"
-                        width="70"
+                        width="210"
                 ></el-table-column>
                 <el-table-column
                         prop="updateTime"
                         label="更新时间"
-                        width="70"
+                        width="210"
                 ></el-table-column>
                 <el-table-column label="操作" width="300">
                     <template slot-scope="scope">
@@ -179,7 +167,7 @@
 </template>
 
 <script>
-    import { getChartDefiniation } from '../../../api/table'
+    import { getDataSouce } from '../../../api/table'
     export default {
         data() {
             return {
@@ -261,7 +249,7 @@
                 this.getPageData()
             },
             _getPageTab2() {
-                getChartDefiniation()
+                getDataSouce()
                     .then(res => {
                         this.allList = res.data.tableList
                         this.schArr = this.allList
