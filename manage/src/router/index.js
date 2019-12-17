@@ -46,10 +46,7 @@ export const currencyRoutes = [
                 meta: { title: '首页', icon: 'el-icon-s-data' }
             }
         ]
-    }
-]
-/*动态添加routers*/
-export const asyncRoutes = [
+    },
     {
         path: '/table',
         name: 'Table',
@@ -62,25 +59,25 @@ export const asyncRoutes = [
         children: [
             {
                 path: 'chart-definition',
-                name: 'ComplexTable',
+                name: 'chart-definition',
                 component: () => import('../views/general-query/chart-definition-management'),
                 meta: { title: '图表定义管理' }
             },
             {
                 path: 'data-dictionary',
-                name: 'ComplexTable',
+                name: 'data-dictionary',
                 component: () => import('../views/general-query/data-dictionary-management'),
                 meta: { title: '数据字典管理' }
             },
             {
                 path: 'data-source',
-                name: 'ComplexTable',
+                name: 'data-source',
                 component: () => import('../views/general-query/data-source-management'),
                 meta: { title: '数据源管理' }
             },
             {
                 path: 'query-definition',
-                name: 'ComplexTable',
+                name: 'query-definition',
                 component: () => import('../views/general-query/query-definition-management'),
                 meta: { title: '查询定义管理' }
             }
@@ -100,7 +97,61 @@ export const asyncRoutes = [
                 meta: { title: '测试' }
             }
         ]
-    },
+    }
+]
+/*动态添加routers*/
+export const asyncRoutes = [
+    // {
+    //     path: '/table',
+    //     name: 'Table',
+    //     redirect: '/table/base-table',
+    //     component: Layout,
+    //     meta: {
+    //         title: '通用查询',
+    //         icon: 'el-icon-table iconfont'
+    //     },
+    //     children: [
+    //         {
+    //             path: 'chart-definition',
+    //             name: 'ComplexTable',
+    //             component: () => import('../views/general-query/chart-definition-management'),
+    //             meta: { title: '图表定义管理' }
+    //         },
+    //         {
+    //             path: 'data-dictionary',
+    //             name: 'ComplexTable',
+    //             component: () => import('../views/general-query/data-dictionary-management'),
+    //             meta: { title: '数据字典管理' }
+    //         },
+    //         {
+    //             path: 'data-source',
+    //             name: 'ComplexTable',
+    //             component: () => import('../views/general-query/data-source-management'),
+    //             meta: { title: '数据源管理' }
+    //         },
+    //         {
+    //             path: 'query-definition',
+    //             name: 'ComplexTable',
+    //             component: () => import('../views/general-query/query-definition-management'),
+    //             meta: { title: '查询定义管理' }
+    //         }
+    //     ]
+    // },
+    // {
+    //     path: '/echarts',
+    //     component: Layout,
+    //     name: 'Echarts',
+    //     redirect: '/echarts/slide-chart',
+    //     meta: { icon: 'el-icon-s-marketing', title: '数据源' },
+    //     children: [
+    //         {
+    //             path: 'dynamic-chart',
+    //             name: 'Dynamic-chart',
+    //             component: () => import('../views/datasourceChart'),
+    //             meta: { title: '测试' }
+    //         }
+    //     ]
+    // },
     {
         path: '*',
         name: '*404',
