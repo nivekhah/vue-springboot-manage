@@ -42,18 +42,17 @@
                 >
             </div>
             <el-table :data="tableData" border stripe>
-                <el-table-column prop="id" label="序号" width="60"></el-table-column>
-                <el-table-column prop="order" label="订单号"></el-table-column>
-                <el-table-column prop="time" label="下单时间"></el-table-column>
+                <el-table-column prop="id" label="ID" width="60"></el-table-column>
+                <el-table-column prop="name" label="统计名称"></el-table-column>
+                <el-table-column prop="chartType" label="图表类型"></el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="配送地址"
-                        width="210"
+                        prop="dimisionType"
+                        label="统计维度类型"
                 ></el-table-column>
-                <el-table-column prop="phone" label="联系电话"></el-table-column>
+                <el-table-column prop="frequence" label="统计频度"></el-table-column>
                 <el-table-column
-                        prop="name"
-                        label="配送员"
+                        prop="datasouceName"
+                        label="数据源名称"
                         width="70"
                 ></el-table-column>
                 <el-table-column prop="status" label="状态" width="90">
@@ -63,6 +62,16 @@
                             }}</el-tag>
                     </template>
                 </el-table-column>
+                <el-table-column
+                        prop="createTime"
+                        label="创建时间"
+                        width="210"
+                ></el-table-column>
+                <el-table-column
+                        prop="updateTime"
+                        label="更新时间"
+                        width="210"
+                ></el-table-column>
                 <el-table-column label="操作" width="300">
                     <template slot-scope="scope">
                         <el-button
@@ -169,7 +178,7 @@
 </template>
 
 <script>
-    import { getPageTab2 } from '../../../api/table'
+    import { getChartDefiniation } from '../../../api/table'
     export default {
         data() {
             return {
@@ -219,9 +228,9 @@
             statusText(val) {
                 if (val === undefined) return
                 if (val === 0) {
-                    return '已完成'
+                    return '可用'
                 } else if (val === 1) {
-                    return '待审核'
+                    return '不可用'
                 } else if (val === 2) {
                     return '配送中'
                 } else {
@@ -251,7 +260,7 @@
                 this.getPageData()
             },
             _getPageTab2() {
-                getPageTab2()
+                getChartDefiniation()
                     .then(res => {
                         this.allList = res.data.tableList
                         this.schArr = this.allList
