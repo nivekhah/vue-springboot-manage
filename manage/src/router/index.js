@@ -61,26 +61,26 @@ export const asyncRoutes = [
         },
         children: [
             {
-                path: 'chart-definition-management',
-                name: 'ChartDefinitionManagement',
+                path: 'chart-definition',
+                name: 'ComplexTable',
                 component: () => import('../views/general-query/chart-definition-management'),
                 meta: { title: '图表定义管理' }
             },
             {
-                path: 'data-dictionary-management',
-                name: 'DataDictionaryManagement',
+                path: 'data-dictionary',
+                name: 'ComplexTable',
                 component: () => import('../views/general-query/data-dictionary-management'),
                 meta: { title: '数据字典管理' }
             },
             {
-                path: 'data-source-management',
-                name: 'DataSourceManagement',
+                path: 'data-source',
+                name: 'ComplexTable',
                 component: () => import('../views/general-query/data-source-management'),
                 meta: { title: '数据源管理' }
             },
             {
-                path: 'query-definition-management',
-                name: 'QueryDefinitionManagement',
+                path: 'query-definition',
+                name: 'ComplexTable',
                 component: () => import('../views/general-query/query-definition-management'),
                 meta: { title: '查询定义管理' }
             }
