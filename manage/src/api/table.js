@@ -26,4 +26,8 @@ export function getDataSouce(params) {
     const url = '/datasouce'
     return $axios.get(url,params)
 }
-
+/* 查询定义接口封装 */
+export function getQueryDefiniation(params) {
+    const url = '/queryDefination'
+    return $axios.get(url,params)
+}

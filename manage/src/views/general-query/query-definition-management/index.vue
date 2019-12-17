@@ -42,27 +42,24 @@
                 >
             </div>
             <el-table :data="tableData" border stripe>
-                <el-table-column prop="id" label="序号" width="60"></el-table-column>
-                <el-table-column prop="order" label="订单号"></el-table-column>
-                <el-table-column prop="time" label="下单时间"></el-table-column>
+                <el-table-column prop="id" label="ID" width="60"></el-table-column>
+                <el-table-column prop="definationName" label="定义名称"></el-table-column>
+                <el-table-column prop="queryNum" label="查询编号"></el-table-column>
                 <el-table-column
-                        prop="address"
-                        label="配送地址"
-                        width="210"
+                        prop="datasouceName"
+                        label="数据源名称"
                 ></el-table-column>
-                <el-table-column prop="phone" label="联系电话"></el-table-column>
-                <el-table-column
-                        prop="name"
-                        label="配送员"
-                        width="70"
-                ></el-table-column>
-                <el-table-column prop="status" label="状态" width="90">
+
+                <el-table-column prop="status" label="是否分页" width="90">
                     <template slot-scope="scope">
                         <el-tag :type="scope.row.status | tagClass">{{
                             scope.row.status | statusText
                             }}</el-tag>
                     </template>
                 </el-table-column>
+                <el-table-column prop="pageSize" label="分页大小"></el-table-column>
+                <el-table-column prop="createTime" label="创建时间" width="210"></el-table-column>
+                <el-table-column prop="updateTime" label="更新时间" width="210"></el-table-column>
                 <el-table-column label="操作" width="300">
                     <template slot-scope="scope">
                         <el-button
@@ -169,7 +166,7 @@
 </template>
 
 <script>
-    import { getPageTab2 } from '../../../api/table'
+    import { getQueryDefiniation } from '../../../api/table'
     export default {
         data() {
             return {
@@ -219,9 +216,9 @@
             statusText(val) {
                 if (val === undefined) return
                 if (val === 0) {
-                    return '已完成'
+                    return '分页'
                 } else if (val === 1) {
-                    return '待审核'
+                    return '不分页'
                 } else if (val === 2) {
                     return '配送中'
                 } else {
@@ -251,7 +248,7 @@
                 this.getPageData()
             },
             _getPageTab2() {
-                getPageTab2()
+                getQueryDefiniation()
                     .then(res => {
                         this.allList = res.data.tableList
                         this.schArr = this.allList
