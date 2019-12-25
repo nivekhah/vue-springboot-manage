@@ -7,7 +7,7 @@
             <div class="searchDiv">
                 <el-input
                         type="text"
-                        placeholder="请输入订单号"
+                        placeholder="定义名称"
                         class="width1"
                         v-model="sch_order"
                 ></el-input>
@@ -15,7 +15,7 @@
                         v-model="sch_status"
                         clearable
                         class="width1"
-                        placeholde="请选择状态"
+                        placeholde="数据源"
                 >
                     <el-option
                             v-for="item in options"
@@ -24,21 +24,24 @@
                             :key="item.value"
                     ></el-option>
                 </el-select>
-                <el-date-picker
-                        class="width1"
-                        v-model="sch_date"
-                        type="date"
-                        placeholder="选择日期时间"
-                        value-format="yyyy-MM-dd"
-                ></el-date-picker>
                 <el-button type="primary" icon="el-icon-search" @click="searchTab()"
-                >搜索</el-button
+                >查询</el-button
                 >
                 <el-button
                         type="primary"
                         icon="el-icon-circle-plus-outline"
                         @click="addTab"
-                >添加</el-button
+                >新增</el-button
+                >
+                <el-button
+                        type="primary"
+                        @click=""
+                >导入</el-button
+                >
+                <el-button
+                        type="primary"
+                        @click=""
+                >导出</el-button
                 >
             </div>
             <el-table :data="tableData" border stripe>

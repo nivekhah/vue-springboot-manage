@@ -20,19 +20,20 @@ import getTitle from '../utils/getTitle'
 
 /*通用routers*/
 export const currencyRoutes = [
-    {
-        path: '/login',
-        name: 'Login',
-        component: () => import('../views/login'),
-        meta: { title: '登录页' },
-        hidden: true
-    },
+    // {
+    //     path: '/login',
+    //     name: 'Login',
+    //     component: () => import('../views/login'),
+    //     meta: { title: '登录页' },
+    //     hidden: true
+    // },
     {
         path: '/404',
         name: '404',
         component: () => import('../views/error-page/404.vue'),
         hidden: true
     },
+    { path: '/', redirect: '/dashbord' },
     {
         path: '/',
         name: 'Home',
