@@ -19,6 +19,8 @@ import getTitle from '../utils/getTitle'
  */
 
 /*通用routers*/
+
+
 export const currencyRoutes = [
     // {
     //     path: '/login',
@@ -100,6 +102,8 @@ export const currencyRoutes = [
         ]
     }
 ]
+
+const token = "admin-token"
 /*动态添加routers*/
 export const asyncRoutes = [
     // {
@@ -180,10 +184,10 @@ export function resetRouter() {
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
     document.title = getTitle(to.meta.title)
-    if (to.path === '/login') {
+    if (to.path === '/dashbord') {
         next()
     } else {
-        if (store.getters.token) {
+        if (token) {
             const hasRoles = store.getters.roles.length > 0
             if (hasRoles) {
                 next()
@@ -205,7 +209,7 @@ router.beforeEach(async (to, from, next) => {
             }
         } else {
             next({
-                path: '/login',
+                path: '/dashbord',
                 query: {
                     redirect: to.fullPath
                 }
