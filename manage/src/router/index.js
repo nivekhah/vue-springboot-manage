@@ -184,7 +184,7 @@ export function resetRouter() {
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
     document.title = getTitle(to.meta.title)
-    if (to.path === '/dashbord') {
+    if (to.path === '/login') {
         next()
     } else {
         if (token) {
@@ -209,7 +209,7 @@ router.beforeEach(async (to, from, next) => {
             }
         } else {
             next({
-                path: '/dashbord',
+                path: '/login',
                 query: {
                     redirect: to.fullPath
                 }

@@ -203,140 +203,123 @@
 
 <script>
     import echarts from 'echarts';
-    import macarons from 'echarts/theme/macarons';
+    //import macarons from 'echarts/theme/macarons';
+    import {getChart} from '../../api/chart'
     // import data from '../../static/data/data.json';
-    import {mapGetters, mapActions, mapMutations} from 'vuex'
-    const getBeforeDate = (n) => {
-        var list = [];
-        var d = new Date();
-        var s = '';
-        var i = 0;
-        while (i < n) {
-            d.setDate(d.getDate() - 1);
-            var year = d.getFullYear();
-            var mon = d.getMonth() + 1;
-            var day = d.getDate();
-            list.push(year + "-" + (mon < 10 ? ('0' + mon) : mon) + "-" + (day < 10 ? ('0' + day) : day));
-            i++;
-        }
-        return list.reverse();
-    }
-    const option = {
-        title: {
-            text: '测试',
-            left:'left',
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
-                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-            }
-        },
-        legend: {
-            data: ['指标1', '指标2', '指标3', '指标4'],
-            orient:'vertical',
-            left:'right',
-            top:'middle',//如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
-            itemGap:20
-        },
-        toolbox: {
-            show: true,
-            orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
-            // 'horizontal' ¦ 'vertical'
-            x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
-                                       // 'center' ¦ 'left' ¦ 'right'
-                                       // ¦ {number}（x坐标，单位px）
-            y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
-                                       // 'top' ¦ 'bottom' ¦ 'center'
-                                       // ¦ {number}（y坐标，单位px）
-            color: ['#1e90ff', '#22bb22', '#4b0082', '#d2691e'],
-            feature: {
-                mark: {show: true},
-                dataView: {show: true, readOnly: false},
-                magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                restore: {show: true},
-                saveAsImage: {show: true}
-            }
-        },
-        calculable: true,
-        dataZoom: {
-            show: true,
-            realtime: true,
-            start: 0,
-            end: 100
-        },
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: false,
-                data: getBeforeDate(30)
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: '指标1',
-                type: 'line',
-                tiled : '总量',
-                areaStyle: {normal: {}},
-                data: function () {
-                    var list = [];
-                    for (var i = 1; i <= 30; i++) {
-                        list.push(Math.round(Math.random() * 1000));
-                    }
-                    return list;
-                }()
-            },
-            {
-                name: '指标2',
-                type: 'line',
-                tiled : '总量',
-                areaStyle: {normal: {}},
-                data: function () {
-                    var list = [];
-                    for (var i = 1; i <= 30; i++) {
-                        list.push(Math.round(Math.random() * 600));
-                    }
-                    return list;
-                }()
-            },
-            {
-                name: '指标3',
-                type: 'line',
-                tiled : '总量',
-                areaStyle: {normal: {}},
-                data: function () {
-                    var list = [];
-                    for (var i = 1; i <= 30; i++) {
-                        list.push(Math.round(Math.random() * 200));
-                    }
-                    return list;
-                }()
-            },
-            {
-                name: '指标4',
-                type: 'line',
-                tiled : '总量',
-                areaStyle: {normal: {}},
-                data: function () {
-                    var list = [];
-                    for (var i = 1; i <= 30; i++) {
-                        list.push(Math.round(Math.random() * 100));
-                    }
-                    return list;
-                }()
-            }
-        ]
-    };
+    import {mapGetters} from 'vuex'
+
+
+    // const getBeforeDate = (n) => {
+    //     var list = [];
+    //     var d = new Date();
+    //     var s = '';
+    //     var i = 0;
+    //     while (i < n) {
+    //         d.setDate(d.getDate() - 1);
+    //         var year = d.getFullYear();
+    //         var mon = d.getMonth() + 1;
+    //         var day = d.getDate();
+    //         list.push(year + "-" + (mon < 10 ? ('0' + mon) : mon) + "-" + (day < 10 ? ('0' + day) : day));
+    //         i++;
+    //     }
+    //     return list.reverse();
+    // }
+
     export default {
         data() {
             return {
-                chart: null
-            };
+                chart: null,
+                option : {
+                    title: {
+                        text: '测试',
+                        left:'left',
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    legend: {
+                        data: ['指标1', '指标2', '指标3', '指标4'],
+                        orient:'vertical',
+                        left:'right',
+                        top:'middle',//如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
+                        itemGap:20
+                    },
+                    toolbox: {
+                        show: true,
+                        orient: 'horizontal',      // 布局方式，默认为水平布局，可选为：
+                        // 'horizontal' ¦ 'vertical'
+                        x: 'right',                // 水平安放位置，默认为全图右对齐，可选为：
+                                                   // 'center' ¦ 'left' ¦ 'right'
+                                                   // ¦ {number}（x坐标，单位px）
+                        y: 'top',                  // 垂直安放位置，默认为全图顶端，可选为：
+                                                   // 'top' ¦ 'bottom' ¦ 'center'
+                                                   // ¦ {number}（y坐标，单位px）
+                        color: ['#1e90ff', '#22bb22', '#4b0082', '#d2691e'],
+                        feature: {
+                            mark: {show: true},
+                            dataView: {show: true, readOnly: false},
+                            magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                            restore: {show: true},
+                            saveAsImage: {show: true}
+                        }
+                    },
+                    calculable: true,
+                    dataZoom: {
+                        show: true,
+                        realtime: true,
+                        start: 0,
+                        end: 100
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: []
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: [
+                        {
+                            name: '指标1',
+                            type: 'line',
+                            tiled : '总量',
+                            areaStyle: {normal: {}},
+                            data: []
+                        },
+                        {
+                            name: '指标2',
+                            type: 'line',
+                            tiled : '总量',
+                            areaStyle: {normal: {}},
+                            data: []
+                        },
+                        {
+                            name: '指标3',
+                            type: 'line',
+                            tiled : '总量',
+                            areaStyle: {normal: {}},
+                            data: []
+                        },
+                        {
+                            name: '指标4',
+                            type: 'line',
+                            tiled : '总量',
+                            areaStyle: {normal: {}},
+                            data: []
+                        }
+                    ]
+                }
+            }
+        },
+        created() {
+            this._getChartData()
         },
         computed: {
             ...mapGetters({
@@ -345,13 +328,27 @@
             }),
         },
         methods: {
+            _getChartData(){
+                getChart().then(res =>{
+                    this.option.xAxis[0].data  = res.xTime
+                    this.option.series[0].data = res.data1
+                    this.option.series[1].data = res.data2
+                    this.option.series[2].data = res.data3
+                    this.option.series[3].data = res.data4
+                    // eslint-disable-next-line no-console
+                    console.log(res.xTime)
+                }).catch(error => {
+                    this.$message.error(error.message)
+                })
+
+            },
             drawbar(id) {
                 let o = document.getElementById(id);
                 let height = document.documentElement.clientHeight;
                 height -= 120;
                 o.style.height= height+"px";
                 this.chart = echarts.init(o,'macarons');
-                this.chart.setOption(option);
+                this.chart.setOption(this.option);
             }
         },
         mounted() {

@@ -199,10 +199,11 @@
                 formData: {},
                 editType: '',
                 options: [
-                    { label: '待审核', value: 1 },
-                    { label: '配送中', value: 2 },
-                    { label: '已完成', value: 0 },
-                    { label: '已取消', value: 3 }
+                    { label: '全部', value: 1 },
+                    { label: '折线图', value: 2 },
+                    { label: '柱状图', value: 0 },
+                    { label: '饼状图', value: 3 },
+                    { label: '其他', value: 4 },
                 ],
                 rowIndex: 0,
                 rules: {

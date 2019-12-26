@@ -46,7 +46,7 @@
                 <el-table-column prop="datasouceName" label="数据源名"></el-table-column>
                 <el-table-column prop="datasouceType" label="数据路类型"></el-table-column>
                 <el-table-column
-                        prop="LinkedUrl"
+                        prop="linkedUrl"
                         label="链接地址"
                         width="210"
                 ></el-table-column>
@@ -251,11 +251,11 @@
             _getPageTab2() {
                 getDataSouce()
                     .then(res => {
-                        this.allList = res.data.tableList
-                        this.schArr = this.allList
-                        this.getPageData()
-                        this.total = res.data.total
-                    })
+                    this.allList = res.data.tableList
+                    this.schArr = this.allList
+                    this.getPageData()
+                    this.total = res.data.total
+                })
                     .catch(error => {
                         this.$message.error(error.message)
                     })
